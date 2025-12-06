@@ -1,1 +1,3 @@
-node_modules
+test/node_modules
+test/test-package-version-manager/node_modules
+/.idea/
