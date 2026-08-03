@@ -7,7 +7,7 @@ branding:
 
 inputs:
   pnpm:
-    description: 'PNPM version'
+    description: 'PNPM version to install (leave empty to read "packageManager" configuration of your "package_file"'
     required: false
   node:
     description: 'Version Spec of the version to use. Examples: 12.x, 10.15.1, >=10.15.0.'
@@ -22,7 +22,7 @@ inputs:
     required: false
     default: '.'
   package_file:
-    description: 'File path to the package.json to read "packageManager" configuration (also supports package.yml). Works in conjunction with "cwd"'
+    description: 'File path to the "package.json" to read "packageManager" configuration (also supports package.yml). Works in conjunction with "cwd" input.'
     required: false
     default: 'package.json'
   install:
@@ -38,7 +38,7 @@ runs:
   using: 'composite'
   steps:
     - name: use pnpm ${{ inputs.pnpm }}
-      uses: pnpm/action-setup@v4
+      uses: pnpm/action-setup@v6
       with:
         version: ${{ inputs.pnpm }}
         package_json_file: '${{ inputs.cwd }}/${{ inputs.package_file }}'
